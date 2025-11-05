@@ -1,5 +1,5 @@
 use crate::{
-    AudioHandles, BIRD_SIZE, BIRD_Z, GROUND_WIDTH, GameState, Ground, Scroll,
+    AudioHandles, BIRD_SIZE, BIRD_Z, GROUND_WIDTH, GameState, Ground, Scroll, UI_Z,
     components::{
         Bird, PIPE_SPAWN_TIME, PipeSpawnTimer, animate_bird, check_passed_pipe,
         check_pipe_collision, despawn_pipe, fall, jump, move_bird, spawn_pipe,
@@ -116,10 +116,12 @@ fn game_setup(
                     font_size: 80.0,
                     ..Default::default()
                 },
+                ZIndex(UI_Z as i32),
                 TextColor(Color::WHITE),
                 TextLayout::new_with_justify(Justify::Center),
             ));
         });
+
     play_state.set(PlayState::Normal);
 }
 
