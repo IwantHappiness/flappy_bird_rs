@@ -11,9 +11,13 @@ pub struct Bird {
     velocity: f32,
 }
 
-pub fn jump(mut bird: Query<&mut Bird>) {
-    for mut bird in &mut bird {
-        bird.velocity = JUMP_AMOUNT;
+pub fn jump(mut bird: Query<(&mut Bird, &Transform)>, window: Query<&Window>) {
+    for (mut bird, transform) in &mut bird {
+        if let Ok(window) = window.single()
+            && transform.translation.y + 300. < window.height()
+        {
+            bird.velocity = JUMP_AMOUNT;
+        }
     }
 }
 
