@@ -2,7 +2,7 @@ use bevy::{
     math::bounding::{Aabb2d, IntersectsVolume},
     prelude::*,
 };
-use rand::{Rng, rng};
+use rand::{RngExt, rng};
 
 use crate::{
     BIRD_SIZE, PIPE_SIZE, PIPE_Z, Scroll,
